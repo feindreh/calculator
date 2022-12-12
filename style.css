@@ -1,0 +1,15 @@
+.button{
+    border: 2px solid black;
+    margin: 10px;
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 60px;
+}
+
+
+body{
+    text-align: center;
+}
