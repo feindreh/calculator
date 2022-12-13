@@ -35,21 +35,36 @@ function operate(operator,num1,num2){
     }
 }
 
-const one = document.querySelector("#1")
-const two = document.querySelector("#2")
-const three = document.querySelector("#3")
-const four = document.querySelector("#4")
-const five = document.querySelector("#5")
-const six = document.querySelector("#6")
-const seven = document.querySelector("#7")
-const eight = document.querySelector("#8")
-const nine = document.querySelector("#9")
-const zero = document.querySelector("#0")
+function addToDisplay(num){
+    display.textContent = num
+}
+
+
+const one = document.querySelector("#one")
+const two = document.querySelector("#two")
+const three = document.querySelector("#three")
+const four = document.querySelector("#four")
+const five = document.querySelector("#five")
+const six = document.querySelector("#six")
+const seven = document.querySelector("#seven")
+const eight = document.querySelector("#eight")
+const nine = document.querySelector("#nine")
+const zero = document.querySelector("#zero")
 
 const display = document.querySelector("#display")
 const clear = document.querySelector("#clear")
 
 
 
+one.addEventListener('click', () => addToDisplay(1))
+two.addEventListener('click', () => addToDisplay(2))
+three.addEventListener('click', () => addToDisplay(3))
+four.addEventListener('click', () => addToDisplay(4))
+five.addEventListener('click', () => addToDisplay(5))
+six.addEventListener('click', () => addToDisplay(6))
+seven.addEventListener('click', () => addToDisplay(7))
+eight.addEventListener('click', () => addToDisplay(8))
+nine.addEventListener('click', () => addToDisplay(9))
+zero.addEventListener('click', () => addToDisplay(0))
 
 
