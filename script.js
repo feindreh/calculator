@@ -11,7 +11,7 @@ function multiply(num1,num2){
 }
 
 function divide(num1,num2){
-    if(num2 == 0){window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');}
+    if(num2 == 0){}
     return num1/num2
 }
 
@@ -45,6 +45,7 @@ function operate(operator,num1,num2){
 
 function addToDisplay(num){
 
+
     if(typeof num === "number"){addToNumber(num)};
     if((num == "+")||(num =="-")||(num == "/")||(num == "*")){addToOperator(num)}
 
@@ -67,16 +68,17 @@ function addToOperator(num){
     operatorSymbol = num
     whatNumber = "second"
     updateDisplay()
+
 }
 
 function deleteDisplay(){
-    let cleared = 1
-    let whatNumber = "first"
-    let equals = 0
-    let number1 = ""
-    let number2 = ""
-    let number3 = ""
-    let operatorSymbol = ""
+    cleared = 1
+    whatNumber = "first"
+    equals = 0
+    number1 = ""
+    number2 = ""
+    number3 = ""
+    operatorSymbol = ""
     display.textContent = "calculator"
  
 }
@@ -140,4 +142,6 @@ let number1 = ""
 let number2 = ""
 let number3 = ""
 let operatorSymbol = ""
+
+
 
