@@ -1,9 +1,9 @@
 function add(num1,num2){
-    return num1+num2
+    return num1 + num2
 }
 
 function sub(num1,num2){
-    return num1-num2
+    return num1 - num2
 }
 
 function multiply(num1,num2){
@@ -11,61 +11,78 @@ function multiply(num1,num2){
 }
 
 function divide(num1,num2){
+    if(num2 == 0){window.location.replace('https://www.youtube.com/watch?v=dQw4w9WgXcQ');}
     return num1/num2
 }
 
 function operate(operator,num1,num2){
+    number3 = ""
+
+    num1 = Number(num1)
+    num2 = Number(num2)
+
     switch(operator){
-        case "plus":
-            console.log(add(num1,num2));
-            return add(num1,num2);
+        case "+":
+            number3 = add(num1,num2);
             break;
-        case "minus":
-            console.log(sub(num1,num2));
-            return sub(num1,num2);
+        case "-":
+            number3 = sub(num1,num2);
             break;
-        case "multiply":
-            console.log(multi(num1,num2));
-            return multi(num1,num2);
+        case "*":
+            number3 = multiply(num1,num2);
             break;
-        case "divide":
-            console.log(divide(num1,num2));
-            return divide(num1,num2);
+        case "/":
+            number3 = divide(num1,num2);
             break;
     }
+    number3 = Math.floor(number3 * 100)/100
+    display.textContent = `${number1} ${operatorSymbol} ${number2} = ${number3}`
+    number1 = ""
+    number2 = ""
+    operatorSymbol = ""
+    whatNumber = "first"
 }
 
 function addToDisplay(num){
-    if(cleared === 1){cleared = 0; displayed = "";}
-    displayed = displayed + `${num}`
-    display.textContent = displayed
+
     if(typeof num === "number"){addToNumber(num)};
     if((num == "+")||(num =="-")||(num == "/")||(num == "*")){addToOperator(num)}
+
 }
 
 function addToNumber(num){
-
+    if(equals == 1){equals = 0; deleteDisplay()}
     if(whatNumber == "first"){number1 = number1 + `${num}`}
     if(whatNumber == "second"){number2 = number2 + `${num}`}
-    console.log(number1)
-    console.log(operatorSymbol)
-    console.log(number2)
+    updateDisplay()
 
 }
 
 function addToOperator(num){
+    if(equals == 1){equals = 0; number1 = number3; updateDisplay()}
+    if(number1 == ""){return}
+    if(number2 != ""){operate(operatorSymbol,number1,number2);
+                        number1 = number3;
+                        number2 = "";}
     operatorSymbol = num
     whatNumber = "second"
-    console.log(number1)
-    console.log(operatorSymbol)
-    console.log(number2)
-
+    updateDisplay()
 }
 
 function deleteDisplay(){
-    displayed = "calculator"
-    cleared = 1
-    display.textContent = displayed
+    let cleared = 1
+    let whatNumber = "first"
+    let equals = 0
+    let number1 = ""
+    let number2 = ""
+    let number3 = ""
+    let operatorSymbol = ""
+    display.textContent = "calculator"
+ 
+}
+
+function updateDisplay(){
+    display.textContent = `${number1} ${operatorSymbol} ${number2}`
 }
 
 
@@ -111,12 +128,16 @@ multiplyButton.addEventListener('click', () => addToDisplay("*"))
 divideButton .addEventListener('click', () => addToDisplay("/"))
 
 clear.addEventListener('click', () => deleteDisplay())
-operater.addEventListener('click', () => operate())
+operater.addEventListener('click', () => {  operate(operatorSymbol,number1,number2);
+                                            equals = 1})
 
 let cleared = 1
+let whatNumber = "first"
+let equals = 0
 
 
 let number1 = ""
 let number2 = ""
+let number3 = ""
 let operatorSymbol = ""
-let whatNumber = "first"
+
