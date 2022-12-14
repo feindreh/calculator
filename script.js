@@ -6,7 +6,7 @@ function sub(num1,num2){
     return num1-num2
 }
 
-function multi(num1,num2){
+function multiply(num1,num2){
     return num1*num2
 }
 
@@ -39,6 +39,27 @@ function addToDisplay(num){
     if(cleared === 1){cleared = 0; displayed = "";}
     displayed = displayed + `${num}`
     display.textContent = displayed
+    if(typeof num === "number"){addToNumber(num)};
+    if((num == "+")||(num =="-")||(num == "/")||(num == "*")){addToOperator(num)}
+}
+
+function addToNumber(num){
+
+    if(whatNumber == "first"){number1 = number1 + `${num}`}
+    if(whatNumber == "second"){number2 = number2 + `${num}`}
+    console.log(number1)
+    console.log(operatorSymbol)
+    console.log(number2)
+
+}
+
+function addToOperator(num){
+    operatorSymbol = num
+    whatNumber = "second"
+    console.log(number1)
+    console.log(operatorSymbol)
+    console.log(number2)
+
 }
 
 function deleteDisplay(){
@@ -46,6 +67,8 @@ function deleteDisplay(){
     cleared = 1
     display.textContent = displayed
 }
+
+
 
 
 const one = document.querySelector("#one")
@@ -59,8 +82,17 @@ const eight = document.querySelector("#eight")
 const nine = document.querySelector("#nine")
 const zero = document.querySelector("#zero")
 
+const addButton = document.querySelector("#plus")
+const subButton = document.querySelector("#minus")
+const multiplyButton = document.querySelector("#multiply")
+const divideButton = document.querySelector("#divide")
+
+
+
+
 const display = document.querySelector("#display")
 const clear = document.querySelector("#clear")
+const operater = document.querySelector("#execute")
 
 one.addEventListener('click', () => addToDisplay(1))
 two.addEventListener('click', () => addToDisplay(2))
@@ -72,17 +104,19 @@ seven.addEventListener('click', () => addToDisplay(7))
 eight.addEventListener('click', () => addToDisplay(8))
 nine.addEventListener('click', () => addToDisplay(9))
 zero.addEventListener('click', () => addToDisplay(0))
+
+addButton.addEventListener('click', () => addToDisplay("\+"))
+subButton.addEventListener('click', () => addToDisplay("-"))
+multiplyButton.addEventListener('click', () => addToDisplay("*"))
+divideButton .addEventListener('click', () => addToDisplay("/"))
+
 clear.addEventListener('click', () => deleteDisplay())
-
-
-// content of #display
-let displayed = ""
-
-//variable to store the information if the last 
-//button was the #clear button 
-// delete display sets it to 1
-// any other key sets it to 0
+operater.addEventListener('click', () => operate())
 
 let cleared = 1
 
 
+let number1 = ""
+let number2 = ""
+let operatorSymbol = ""
+let whatNumber = "first"
